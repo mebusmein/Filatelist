@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @var	string
  *
  */
-	define('CI_VERSION', '3.1.0-dev');
+	define('CI_VERSION', '3.0.6');
 
 /*
  * ------------------------------------------------------
@@ -298,7 +298,7 @@ if ( ! is_php('5.4'))
  *  Instantiate the URI class
  * ------------------------------------------------------
  */
-	$URI =& load_class('URI', 'core', $CFG);
+	$URI =& load_class('URI', 'core');
 
 /*
  * ------------------------------------------------------
