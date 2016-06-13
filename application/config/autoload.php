@@ -138,3 +138,9 @@ $autoload['language'] = array();
 */
 
 $autoload['model'] = array();
+
+/*
+ * Doctrine lib
+ */
+
+$autoload[‘libraries’] = array(‘doctrine’);
