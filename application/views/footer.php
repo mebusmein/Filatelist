@@ -15,4 +15,14 @@
 
 </footer>
 
+<!-- Makes carousel do its magic -->
+
+<script language="JavaScript" type="text/javascript">
+    $(document).ready(function(){
+        $('.carousel').carousel({
+            interval: 10000
+        })
+    });
+</script>
+
 </html>

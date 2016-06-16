@@ -7,7 +7,8 @@
 body {
     font-family: Lora, 'Times New Roman', serif;
     font-size: 20px;
-    color: #404040
+    color: #404040;
+    background-color: #E1E8F5;
 }
 
 p {
@@ -52,7 +53,7 @@ hr.small {
     max-width: 100px;
     margin: 15px auto;
     border-width: 4px;
-    border-color: goldenrod
+    border-color: #EEA566;
 }
 
 .navbar-custom {
@@ -89,12 +90,13 @@ hr.small {
         color: rgba(255, 255, 255, .8)
     }
     .navbar-custom .nav li a {
-        color: goldenrod;
+        color: #315AB6;
         padding: 20px
     }
     .navbar-custom .nav li a:hover,
     .navbar-custom .nav li a:focus {
-        color: rgba(255, 255, 255, .8)
+        color: #aabde9;
+        background-color: #315AB6
     }
 }
 
@@ -151,14 +153,14 @@ hr.small {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    margin-bottom: 50px
+    margin-bottom: 0px
 }
 
 .intro-header .site-heading,
 .intro-header .post-heading,
 .intro-header .page-heading {
     padding: 100px 0 50px;
-    color: goldenrod
+    color: #EEA566;
 }
 
 @media only screen and (min-width:768px) {
