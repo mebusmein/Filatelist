@@ -20,15 +20,19 @@ class Welcome extends CI_Controller {
    */
   public function index()
   {
-    echo 'hello world!';
-
     $this->load->model('admin');
 
-    $admin = Admin::find(2);
+    $admin = Admin::find();
 
-    $admin->name = "Danny";
+    $admin->name;
 
-    $admin->save();
+    foreach($admin as $item){
+      $item->hallo();
+      $item->password;
+      //$item->save();
+    }
+
+    //var_dump($admin);
   }
 
 }
