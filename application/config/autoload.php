@@ -62,8 +62,6 @@ $autoload['packages'] = array();
 
 $autoload['libraries'] = array();
 
-$autoload['libraries'] = array('doctrine');
-
 
 /*
 | -------------------------------------------------------------------
