@@ -13,7 +13,7 @@ body {
 
 p {
     line-height: 1.5;
-    margin: 30px 0
+    margin: 0px 0
 }
 
 p a {
@@ -54,6 +54,10 @@ hr.small {
     margin: 15px auto;
     border-width: 4px;
     border-color: #EEA566;
+}
+
+.news-background {
+    background-color: #EEA566;
 }
 
 .navbar-custom {
@@ -300,7 +304,7 @@ hr.small {
 }
 
 footer {
-    padding: 50px 0 65px
+    padding: 10px 0 20px;
 }
 
 footer .list-inline {
