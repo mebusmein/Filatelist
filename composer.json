@@ -12,13 +12,20 @@
 	},
 	"require": {
 		"php": ">=5.2.4",
-		"doctrine/orm": "^2.5",
-		"fzaninotto/faker": "^1.6"
+		"fzaninotto/faker": "^1.6",
+	  	"illuminate/database": "5.0.28"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
 	},
 	"require-dev": {
 		"mikey179/vfsStream": "1.1.*"
+	},
+	"autoload":
+	{
+	  "classmap":
+	  [
+		"application/models"
+	  ]
 	}
 }
