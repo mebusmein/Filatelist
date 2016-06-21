@@ -12,6 +12,7 @@
 	},
 	"require": {
 		"php": ">=5.2.4",
+		"fzaninotto/faker": "^1.6",
 	  	"illuminate/database": "5.0.28"
 	},
 	"suggest": {
