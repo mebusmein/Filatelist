@@ -1,4 +1,4 @@
-<!-- Page Header -->
+<!-- Page Header. -->
 <header class="intro-header" style="background-image: url('<?= base_url('assets/img/home-bg.png')?>');">
     <div class="container">
         <div class="row">
