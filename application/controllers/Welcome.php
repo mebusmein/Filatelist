@@ -20,19 +20,22 @@ class Welcome extends CI_Controller {
    */
   public function index()
   {
-    $this->load->model('admin');
+    $this->load->model('user');
+//    $this->load->model('tag');
+    $this->load->model('bid');
+//
+    $users = User::find(506508006);
+//
+//    $tags = $users->tags;
+    $bids = $users->bids;
+//
 
-    $admin = Admin::find();
-
-    $admin->name;
-
-    foreach($admin as $item){
-      $item->hallo();
-      $item->password;
-      //$item->save();
+//    foreach ($tags as $tag){
+//      echo $tag->name;
+//    }
+    foreach ($bids as $bid){
+      echo $bid->lot_id;
     }
-
-    //var_dump($admin);
   }
 
 }
