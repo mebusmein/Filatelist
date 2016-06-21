@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends MY_Controller {
 
   /**
    * Index Page for this controller.
@@ -20,19 +20,13 @@ class Welcome extends CI_Controller {
    */
   public function index()
   {
-    $this->load->model('admin');
+    $this->load->model('user');
+    $this->load->model('bid');
 
-    $admin = Admin::find();
+    $this->require_min_level(1);
+    $user = User::find($this->auth_user_id);
+    var_dump($user);
 
-    $admin->name;
-
-    foreach($admin as $item){
-      $item->hallo();
-      $item->password;
-      //$item->save();
-    }
-
-    //var_dump($admin);
   }
 
 }

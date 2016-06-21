@@ -1,9 +1,17 @@
 <?php
 get_instance()->load->iface('HasPreferences');
 
-class User extends CI_Model implements HasPreferences
+use \Illuminate\Database\Eloquent\Model as Eloquent;
+
+class User extends Eloquent implements HasPreferences
 {
     public $name;
+
+    protected $table = 'users';
+
+    protected $primaryKey = 'user_id';
+
+    protected $guarded = ['passwd', 'passwd_recovery_code', 'passwd_recovery_date'];
 
     protected $preferences = [];
 
@@ -14,6 +22,14 @@ class User extends CI_Model implements HasPreferences
     public function __construct()
     {
         parent::__construct();
+    }
+
+    public function tags(){
+        return $this->belongsToMany('Tag','user_tag');
+    }
+
+    public function bids(){
+        return $this->hasMany('Bid');
     }
 
     /**
