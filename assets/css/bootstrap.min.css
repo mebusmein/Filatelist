@@ -8061,7 +8061,7 @@ button.close {
     transition: all 0.1s linear;
 }
 .panel-login>.panel-heading a.active{
-    color: #029f5b;
+    color: #315AB6;
     font-size: 18px;
 }
 .panel-login>.panel-heading hr{
@@ -8092,7 +8092,7 @@ button.close {
     border-color: #ccc;
 }
 .btn-login {
-    background-color: #59B2E0;
+    background-color: #315AB6;
     outline: none;
     color: #fff;
     font-size: 14px;
@@ -8105,7 +8105,7 @@ button.close {
 .btn-login:hover,
 .btn-login:focus {
     color: #fff;
-    background-color: #53A3CD;
+    background-color: #315AB6;
     border-color: #53A3CD;
 }
 .forgot-password {
@@ -8119,7 +8119,7 @@ button.close {
 }
 
 .btn-register {
-    background-color: #1CB94E;
+    background-color: #315AB6;
     outline: none;
     color: #fff;
     font-size: 14px;
@@ -8132,7 +8132,7 @@ button.close {
 .btn-register:hover,
 .btn-register:focus {
     color: #fff;
-    background-color: #1CA347;
+    background-color: #315AB6;
     border-color: #1CA347;
 }
 
