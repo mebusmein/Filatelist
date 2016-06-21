@@ -37,7 +37,7 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin: 0 0 0 15px;">
                 <ul class="nav navbar-nav navbar-left">
                     <li>
                         <a href="home">Home</a>
@@ -50,10 +50,7 @@
                     </li>
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="registreren">Registreer</a>
-                    </li>
+                <ul class="nav navbar-nav navbar-right" style="margin: 0 15px 0 0;">
                     <li>
                         <a href="login">Login</a>
                     </li>
@@ -65,4 +62,6 @@
         <!-- /.container -->
     </nav>
 </head>
+
+<br><br>
 <body>
