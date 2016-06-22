@@ -16,9 +16,6 @@ class Recommend extends CI_Controller {
             Product::init('Django', ['Drama' => 1.0, 'Western' => 1.0])
         ];
 
-
-
-
         $field = $this->input->post('field');
         if($field){
             $user = new User();
