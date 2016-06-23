@@ -37,23 +37,26 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin: 0 0 0 15px;">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin: 0 0 0 0px;">
                 <ul class="nav navbar-nav navbar-left">
                     <li>
-                        <a href="home">Home</a>
+<!--                        <a href="--><?//=site_url('pages/view/home')?><!--">Home</a>-->
+                        <a href="<?=site_url('home')?>">Home</a>
                     </li>
                     <li>
-                        <a href="about">Over Phileon</a>
+                        <a href="<?=site_url('account')?>">Account</a>
                     </li>
                     <li>
-                        <a href="contact">Contact</a>
+                        <a href="<?=site_url('app')?>">Feed</a>
                     </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right" style="margin: 0 15px 0 0;">
+
                     <li>
-                        <a href="login">Login</a>
+                        <a href="<?=site_url('auth')?>">Login</a>
                     </li>
+
                 </ul>
             </div>
 

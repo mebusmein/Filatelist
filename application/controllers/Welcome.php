@@ -21,6 +21,7 @@ class Welcome extends MY_Controller {
   public function index()
   {
     $this->load->model('Product');
+    $this->load->model('user');
 
     $test = $this->mongo_db->get_where('dbProject',array('userID'=>3));
     $product = Product::createFromJsonBatch($test);

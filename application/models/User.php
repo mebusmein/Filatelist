@@ -5,8 +5,6 @@ use \Illuminate\Database\Eloquent\Model as Eloquent;
 
 class User extends Eloquent implements HasPreferences
 {
-    public $name;
-
     protected $table = 'users';
 
     protected $primaryKey = 'user_id';
