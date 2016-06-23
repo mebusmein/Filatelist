@@ -7,7 +7,18 @@ class Product extends CI_Model implements HasPreferences
     /**
      * @var string Name of the object
      */
-    public $name;
+    protected $id;
+
+    public $userID;
+    public $createdBy;
+    public $productName;
+    public $description;
+    public $startValue;
+    public $startDate;
+    public $endDate;
+    public $tags = [];
+    public $images = [];
+    public $bids = [];
 
     /**
      * @var double Preference score
@@ -20,6 +31,35 @@ class Product extends CI_Model implements HasPreferences
      * Product constructor.
      * @param $name
      */
+
+    public static function createFromJsonBatch(){
+        foreach(){
+            self::createFromJson();
+        }
+    }
+
+    public static function createFromJson($string){
+        $product = new Product();
+        $product->userID = $string['userID'];
+        $product->createdBy = $string['createdBy'];
+        $product->productName = $string['productName'];
+        $product->description = $string['description'];
+        $product->startValue = $string['startValue'];
+        $product->startDate = $string['startDate'];
+        $product->endDate = $string['endDate'];
+        $product->tags = $string['tags'];
+        $product->images = $string['images'];
+        $product->bids = $string['bids'];
+        return $product;
+    }
+
+    public function save(){
+        if($this->id !== NULL){
+
+        }else{
+
+        }
+    }
 
     public static function init($name, $preferences = [])
     {
