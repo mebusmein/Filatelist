@@ -1,5 +1,6 @@
 <?php
 get_instance()->load->iface('HasPreferences');
+get_instance()->load->model('tag');
 
 use \Illuminate\Database\Eloquent\Model as Eloquent;
 
@@ -23,7 +24,7 @@ class User extends Eloquent implements HasPreferences
     }
 
     public function tags(){
-        return $this->belongsToMany('Tag','user_tag');
+        return $this->belongsToMany('Tag','user_tag')->withPivot('value', 'count');
     }
 
     public function bids(){
@@ -36,6 +37,15 @@ class User extends Eloquent implements HasPreferences
     public function getPreferences()
     {
         return $this->preferences;
+    }
+
+
+    public function setPreferences($tags)
+    {
+        foreach($tags as $tag){
+            var_dump($tag->pivot->value);
+            $this->setPreference($tag->name,$tag->pivot->value,$tag->pivot->count);
+        }
     }
 
     /**

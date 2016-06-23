@@ -55,7 +55,6 @@ class Product extends CI_Model implements HasPreferences
     }
 
     public function save(){
-        print_r($this->id);
         if($this->id !== NULL){
             echo "update";
             $this->mongo_db->where(array('_id'=>$this->id))->update('dbProject',array('userID'=>$this->userID,'createdBy'=>$this->createdBy,'productName'=>$this->productName,'description'=>$this->description,'startValue'=>$this->startValue,'startDate'=>$this->startDate,'endDate'=>$this->endDate,'tags'=>$this->tags,'images'=>$this->images,'bids'=>$this->bids));
@@ -71,6 +70,12 @@ class Product extends CI_Model implements HasPreferences
         $product->name = $name;
         $product->processPreferences($preferences);
         return $product;
+    }
+
+    public function setPreferences(){
+        foreach($this->tags as $tag){
+            $this->setPreference($tag['name'],$tag['value']);
+        }
     }
 
     protected function processPreferences($preferences)
