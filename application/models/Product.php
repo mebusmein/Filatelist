@@ -7,7 +7,7 @@ class Product extends CI_Model implements HasPreferences
     /**
      * @var string Name of the object
      */
-    protected $id;
+    public $id;
 
     public $userID;
     public $createdBy;
@@ -31,12 +31,6 @@ class Product extends CI_Model implements HasPreferences
      * Product constructor.
      * @param $name
      */
-
-    public static function createFromJsonBatch(){
-        foreach(){
-            self::createFromJson();
-        }
-    }
 
     public static function createFromJson($string){
         $product = new Product();
@@ -123,5 +117,15 @@ class Product extends CI_Model implements HasPreferences
     {
         $this->score = $score;
         return $this;
+    }
+    
+    public function getHighestBid() {
+    	$highest = ['bid' => 0];
+    	foreach($this->bids as $bid) {
+    		if ($highest['bid']<$bid['bid']) {
+    			$highest = $bid;
+    		}
+    	}
+    	return $highest;
     }
 }
