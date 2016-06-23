@@ -21,7 +21,7 @@ class Welcome extends MY_Controller {
   public function index()
   {
     $this->load->model('user');
-    $this->load->model('bid');
+    
 
     $this->require_min_level(1);
     $user = User::find($this->auth_user_id);

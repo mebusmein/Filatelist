@@ -7,10 +7,10 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-6">
-                            <a href="#" class="active" id="login-form-link">Inloggen</a>
+                            <a href="<?=site_url('auth')?>" class="active" id="login-form-link">Inloggen</a>
                         </div>
                         <div class="col-xs-6">
-                            <a href="#" id="register-form-link">Registeren</a>
+                            <a href="<?=site_url('auth/registrer')?>" id="register-form-link">Registeren</a>
                         </div>
                     </div>
                     <hr>
