@@ -53,3 +53,6 @@ $route['default_controller'] = 'auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route[LOGIN_PAGE] = 'auth';
+
+$route['account/edit']['post'] = 'account/editPost';
+//$route['account/editPost'] = 'account';
