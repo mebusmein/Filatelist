@@ -16,14 +16,6 @@
 <div class="container">
 <div class="row">
 <h1 class="text-center">Profiel van <?=$user->username?></h1>
-
-
-
-
-
-
-
-
 <table class="table table-condensed">
   <thead>
     <tr>

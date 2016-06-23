@@ -51,29 +51,14 @@ class Account extends MY_Controller {
         redirect('/account');
     }
     
-    public function profile() {
-    	
-    	$user1 = new Product();
-    	
-    	$user1->user_id = '129483';
-    	$user1->username = 'Jan39';
-    	$user1->firstname = 'Jan';
-    	$user1->lastname = 'Vroomshoop';
-    	$user1->postalcode = '9448BG';
-    	$user1->address = 'Bergersweg 15';
-    	$user1->city = 'Amsteldorp';
-    	$user1->email = 'jan.vroomshoop@gmail.com';
-    	$user1->passwd = 'jvrooms123';
-    	
-    	$this->load->model('user');
-    	# $this->require_min_level(1);
-    	//$user = User::find($id);
-    	
-    	# $data['user'] = $user;
-    	$data['user'] = $user1;
+    public function profile($id) {
+        $this->load->model('user');
+        $this->require_min_level(1);
+        $user = User::find($id);
+
+    	$data['user'] = $user;
     	
     	$this->load->view('header');
-    	#$this->load->view('pages/account');
     	$this->load->view('pages/profile', $data);
     	$this->load->view('footer');
     }
