@@ -146,7 +146,7 @@ class Auth_Controller extends CI_Controller {
 		}
 
 		// Else check if we need to redirect to the login page
-		else if( $this->uri->uri_string() != LOGIN_PAGE )
+		else if( $this->uri->uri_string() != 'LOGIN_PAGE' )
 		{
 			$this->_redirect_to_login_page();
 		}
@@ -254,14 +254,14 @@ class Auth_Controller extends CI_Controller {
 			: urlencode( $this->uri->uri_string() );
 
 		// Set the redirect protocol
-		$redirect_protocol = USE_SSL ? 'https' : NULL;
+		$redirect_protocol = 'USE_SSL' ? 'https' : NULL;
 
 		// Load URL helper for the site_url function
 		$this->load->helper('url');
 
 		// Redirect to the login form
 		header(
-			'Location: ' . site_url( LOGIN_PAGE . '?redirect=' . $redirect, $redirect_protocol ),
+			'Location: ' . site_url( 'LOGIN_PAGE' . '?redirect=' . $redirect, $redirect_protocol ),
 			TRUE,
 			302
 		);
