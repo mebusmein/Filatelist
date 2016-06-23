@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once 'vendor/fzaninotto/faker/src/autoload.php';
 
 class Welcome extends MY_Controller {
 
@@ -23,10 +24,12 @@ class Welcome extends MY_Controller {
     $this->load->model('Product');
     $this->load->model('user');
 
-    $test = $this->mongo_db->get_where('dbProject',array('userID'=>3));
-    $product = Product::createFromJsonBatch($test);
+    /*$test = $this->mongo_db->get_where('dbProject',array('userID'=>3));
+    $test = $this->mongo_db->where(array('userID'=>2))->get('dbProject');
+    $product = Product::createFromJson($test[0]);
+    var_dump($product);
+    echo "<br>";
 
-    $product = $this->mongo_db->where(array('userID'=>3))->get('dbProject');
     $product->userID = 3;
     $product->createdBy = "Johannes koenrades klene";
     $product->productName = "Drop";
@@ -37,7 +40,13 @@ class Welcome extends MY_Controller {
     $product->tags = array('name' => 'tag1', 'value' => 1);
     $product->images = array('id' => 1, 'name' => 'foto', 'description'=>'foto van boven');
     $product->bids = array('bidder'=>'Bas','bid'=>115,'date'=>'24-06-2016');
-    $product->save();
+    var_dump($product);
+    $product->save(); */
+
+    $faker = Faker\Factory::create('nl_NL');
+    for($i=1; $i < 251; $i++){
+      $this->mongo_db->insert('dbProject',$data = array('userID'=>$i,'createdBy'=>$faker->name,'productName'=>$faker->text($maxNbChars = 20),'description'=>$faker->text($maxNbChars = 250),'startValue'=>$faker->numberBetween($min=100,$max=150000),'startDate'=>$faker->date($format = 'd-m-Y', $max = 'now'),'endDate'=>'24-06-2016','tags'=>['name'=>'tag1','value'=>$faker->numberBetween($min=-1,$max=1)], 'images'=>['id'=>1,'name'=>'foto1','description'=>$faker->text($maxNbChars=150)],'bids'=>['bidder'=>$faker->name,'bid'=>$faker->numberBetween($min=500,$max=200000),'date'=>'24-06-2016']));
+    }
   }
 
 }

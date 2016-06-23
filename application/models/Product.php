@@ -1,7 +1,6 @@
 <?php
 
 get_instance()->load->iface('HasPreferences');
-
 class Product extends CI_Model implements HasPreferences
 {
     /**
@@ -59,7 +58,7 @@ class Product extends CI_Model implements HasPreferences
         print_r($this->id);
         if($this->id !== NULL){
             echo "update";
-            $this->mongo_db->get_where('dbProject',array('_id'=>$this->id))->update('dbProject', $data = array('userID'=>$this->userID,'createdBy'=>$this->createdBy,'productName'=>$this->productName,'description'=>$this->description,'startValue'=>$this->startValue,'startDate'=>$this->startDate,'endDate'=>$this->endDate,'tags'=>$this->tags,'images'=>$this->images,'bids'=>$this->bids));
+            $this->mongo_db->where(array('_id'=>$this->id))->update('dbProject',array('userID'=>$this->userID,'createdBy'=>$this->createdBy,'productName'=>$this->productName,'description'=>$this->description,'startValue'=>$this->startValue,'startDate'=>$this->startDate,'endDate'=>$this->endDate,'tags'=>$this->tags,'images'=>$this->images,'bids'=>$this->bids));
         }else{
             echo "insert";
             $this->mongo_db->insert('dbProject', $data = array('userID'=>$this->userID,'createdBy'=>$this->createdBy,'productName'=>$this->productName,'description'=>$this->description,'startValue'=>$this->startValue,'startDate'=>$this->startDate,'endDate'=>$this->endDate,'tags'=>$this->tags,'images'=>$this->images,'bids'=>$this->bids));
