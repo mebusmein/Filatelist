@@ -7,8 +7,7 @@ class Product extends CI_Model implements HasPreferences
     /**
      * @var string Name of the object
      */
-    protected $id;
-
+    protected $id = null;
     public $userID;
     public $createdBy;
     public $productName;
@@ -32,14 +31,17 @@ class Product extends CI_Model implements HasPreferences
      * @param $name
      */
 
-    public static function createFromJsonBatch(){
-        foreach(){
-            self::createFromJson();
+    public static function createFromJsonBatch($json){
+        $products = [];
+        foreach($json as $value){
+            $products[] = self::createFromJson($value);
         }
+        return $products;
     }
 
     public static function createFromJson($string){
         $product = new Product();
+        $product->id = $string['_id'];
         $product->userID = $string['userID'];
         $product->createdBy = $string['createdBy'];
         $product->productName = $string['productName'];
@@ -54,10 +56,13 @@ class Product extends CI_Model implements HasPreferences
     }
 
     public function save(){
+        print_r($this->id);
         if($this->id !== NULL){
-
+            echo "update";
+            $this->mongo_db->get_where('dbProject',array('_id'=>$this->id))->update('dbProject', $data = array('userID'=>$this->userID,'createdBy'=>$this->createdBy,'productName'=>$this->productName,'description'=>$this->description,'startValue'=>$this->startValue,'startDate'=>$this->startDate,'endDate'=>$this->endDate,'tags'=>$this->tags,'images'=>$this->images,'bids'=>$this->bids));
         }else{
-
+            echo "insert";
+            $this->mongo_db->insert('dbProject', $data = array('userID'=>$this->userID,'createdBy'=>$this->createdBy,'productName'=>$this->productName,'description'=>$this->description,'startValue'=>$this->startValue,'startDate'=>$this->startDate,'endDate'=>$this->endDate,'tags'=>$this->tags,'images'=>$this->images,'bids'=>$this->bids));
         }
     }
 

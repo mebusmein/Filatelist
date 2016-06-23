@@ -20,13 +20,24 @@ class Welcome extends MY_Controller {
    */
   public function index()
   {
-    $this->load->model('user');
-    $this->load->model('bid');
+    $this->load->model('Product');
 
-    $this->require_min_level(1);
-    $user = User::find($this->auth_user_id);
-    var_dump($user);
+    $test = $this->mongo_db->get_where('dbProject',array('userID'=>3));
+    $product = Product::createFromJsonBatch($test);
+    
 
+    /*$product = $this->mongo_db->where(array('userID'=>3))->get('dbProject');
+    $product->userID = 3;
+    $product->createdBy = "Johannes koenrades klene";
+    $product->productName = "Drop";
+    $product->description = "oud maar goud";
+    $product->startValue = 75;
+    $product->startDate = "12-01-2015";
+    $product->endDate = "20-20-2020";
+    $product->tags = array('name' => 'tag1', 'value' => 1);
+    $product->images = array('id' => 1, 'name' => 'foto', 'description'=>'foto van boven');
+    $product->bids = array('bidder'=>'Bas','bid'=>115,'date'=>'24-06-2016');
+    $product->save(); */
   }
 
 }
