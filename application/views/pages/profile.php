@@ -15,43 +15,54 @@
 
 <div class="container">
 <div class="row">
-<h1 class="text-center">Account Profiel</h1>
+<h1 class="text-center">Profiel van <?=$user->username?></h1>
 
-<form>
- <div class="form-group">
-    <label for="Username">Gebruikersnaam</label>
-    <input type="text" class="form-control" id="Username" placeholder="<?=$user->username?>">
-  </div>
-   <div class="form-group">
-    <label for="Firstname">Voornaam</label>
-    <input type="text" class="form-control" id="Firstname" placeholder="<?=$user->firstname?>">
-  </div>
-  <div class="form-group">
-    <label for="Lastname">Achternaam</label>
-    <input type="text" class="form-control" id="Lastname" placeholder="<?=$user->lastname?>">
-  </div>
-    <div class="form-group">
-    <label for="Address">Adres</label>
-    <input type="text" class="form-control" id="Address" placeholder="<?=$user->address?>">
-  </div>
-    <div class="form-group">
-    <label for="Postalcode">Postcode</label>
-    <input type="text" class="form-control" id="Postalcode" placeholder="<?=$user->postalcode?>">
-  </div>
-    <div class="form-group">
-    <label for="City">Woonplaats</label>
-    <input type="text" class="form-control" id="City" placeholder="<?=$user->city?>">
-  </div>
-  <div class="form-group">
-    <label for="Email">Emailadres</label>
-    <input type="email" class="form-control" id="Email" placeholder="<?=$user->email?>">
-  </div>
-  <div class="form-group">
-    <label for="Password">Wachtwoord</label>
-    <input type="password" class="form-control" id="Password" placeholder="secrets">
-  </div>
-  <button type="submit" class="btn btn-default center-block">Wijzigen</button>
-</form>
+
+
+
+
+
+
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Omschrijving</th>
+      <th>Gegevens</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gebruikersnaam</td>
+      <td><?=$user->username?></td>
+    </tr>
+    <tr>
+      <td>Voornaam</td>
+      <td><?=$user->firstname?></td>
+    </tr>
+    <tr>
+      <td>Achternaam</td>
+      <td><?=$user->lastname?></td>
+    </tr>
+    <tr>
+      <td>Adres</td>
+      <td><?=$user->address?></td>
+    </tr>
+    <tr>
+      <td>Postcode</td>
+      <td><?=$user->postalcode?></td>
+    </tr>
+    <tr>
+      <td>Woonplaats</td>
+      <td><?=$user->city?></td>
+    </tr>
+    <tr>
+      <td>Emailadres</td>
+      <td><?=$user->email?></td>
+    </tr>
+  </tbody>
+</table>
+
 
 
 
