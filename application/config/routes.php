@@ -53,4 +53,4 @@ $route['default_controller'] = 'pages';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['page/(:any)'] = 'pages/view';
-$route[LOGIN_PAGE] = 'examples/login';
+#$route[LOGIN_PAGE] = 'examples/login';
