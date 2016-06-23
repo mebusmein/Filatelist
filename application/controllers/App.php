@@ -15,7 +15,16 @@ class App extends MY_Controller {
         $this->load->view('footer');
     }
     
-    public function product($id){
-        echo "dit is de productpagina " . $id;
+    public function product(){
+
+        $productJson = $this->mongo_db->get_where('dbProject', array('userID'=>2));
+        $product = Product::createFromJson($productJson[0]);
+        $data = [
+            "product" => $product
+        ];
+
+        $this->load->view('header');
+        $this->load->view('pages/product', $data);
+        $this->load->view('footer');
     }
 }
