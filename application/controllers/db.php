@@ -55,7 +55,7 @@ class Db extends MY_Controller
             'Normaal',
             'Automobiel',
             '70\'s',
-            '90\''
+            '90\'s'
         ];
 
         $faker = Faker\Factory::create('nl_NL');
@@ -69,7 +69,6 @@ class Db extends MY_Controller
             $this->mongo_db->insert('dbProject',
                 $data = array(
                     'userID' => $i,
-                    'createdBy' => $faker->name,
                     'productName' => $faker->text($maxNbChars = 20),
                     'description' => $faker->text($maxNbChars = 250),
                     'startValue' => $faker->numberBetween($min = 100, $max = 150000),
@@ -88,5 +87,35 @@ class Db extends MY_Controller
                     ]
                 ));
         }
+    }
+
+    public function sql(){
+        $faker = Faker\Factory::create('nl_NL');
+        $this->load->model('user');
+
+        $tags = Tag::all();
+
+        for ($i = 0; $i < 250; $i++) {
+            $sync = [];
+            $newTags = $tags->random(rand(2,5));
+            foreach($newTags as $tag){
+                $sync[$tag->tag_id] = ['value' => 1, 'count' => 5];
+            }
+            $user = new User();
+            $user->user_id = $i;
+            $user->username = $faker->userName;
+            $user->email = $faker->email;
+            $user->firstname = $faker->firstName;
+            $user->lastname = $faker->lastName;
+            $user->address = $faker->address;
+            $user->postalcode = $faker->postcode;
+            $user->city = $faker->city;
+            $user->passwd = '$2y$11$5a9OvBmYORADJmmhyg045eC0qqjGABfRT/6zPv8elu365gqvrvjFm';
+            $user->auth_level = 1;
+            $user->created_at = time();
+            $user->save();
+            $user->tags()->sync($sync);
+        }
+
     }
 }

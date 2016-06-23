@@ -38,7 +38,7 @@
 			<div class="clearfix"></div>
 			<div class="btn-group btn-group-xs" role="group" aria-label="...">
 				<?php foreach($product->tags as $tag):?>
-					<button type="button" class="btn btn-default"><?= $tag['tag'] ?></button>
+					<button type="button" class="btn btn-default"><?= $tag['name'] ?></button>
 				<?php endforeach;?>
 				</div>
 

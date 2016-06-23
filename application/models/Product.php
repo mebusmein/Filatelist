@@ -58,6 +58,15 @@ class Product extends CI_Model implements HasPreferences
         return $product;
     }
 
+    public function getHighestBid(){
+        $top = ['bid' => 0];
+        foreach($this->bids as $bid){
+            if($top['bid'] < $bid['bid'])
+                $top = $bid;
+        }
+        return $top;
+    }
+
     public function save(){
         if($this->id !== NULL){
             $this->mongo_db->where(array('_id'=>$this->id))->update('dbProject',array('userID'=>$this->userID,'createdBy'=>$this->createdBy,'productName'=>$this->productName,'description'=>$this->description,'startValue'=>$this->startValue,'startDate'=>$this->startDate,'endDate'=>$this->endDate,'tags'=>$this->tags,'images'=>$this->images,'bids'=>$this->bids));
