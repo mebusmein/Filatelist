@@ -2,7 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 require_once 'vendor/fzaninotto/faker/src/autoload.php';
 
-class Db extends MY_Controller {
+class Db extends MY_Controller
+{
 
     /**
      * Index Page for this controller.
@@ -41,12 +42,51 @@ class Db extends MY_Controller {
         $product->images = array('id' => 1, 'name' => 'foto', 'description'=>'foto van boven');
         $product->bids = array('bidder'=>'Bas','bid'=>115,'date'=>'24-06-2016');
         var_dump($product);
-        $product->save(); */
+        $product->save();
+        */
+
+        $protoTags = [
+            'Retro',
+            'Zeldzaam',
+            'Statussymbool',
+            'Nieuw',
+            'Klein',
+            'Groot',
+            'Normaal',
+            'Automobiel',
+            '70\'s',
+            '90\''
+        ];
 
         $faker = Faker\Factory::create('nl_NL');
-        for($i=1; $i < 251; $i++){
-            $this->mongo_db->insert('dbProject',$data = array('userID'=>$i,'createdBy'=>$faker->name,'productName'=>$faker->text($maxNbChars = 20),'description'=>$faker->text($maxNbChars = 250),'startValue'=>$faker->numberBetween($min=100,$max=150000),'startDate'=>$faker->date($format = 'd-m-Y', $max = 'now'),'endDate'=>'24-06-2016','tags'=>['name'=>'tag1','value'=>$faker->numberBetween($min=-1,$max=1)], 'images'=>['id'=>1,'name'=>'foto1','description'=>$faker->text($maxNbChars=150)],'bids'=>['bidder'=>$faker->name,'bid'=>$faker->numberBetween($min=500,$max=200000),'date'=>'24-06-2016']));
+        for ($i = 1; $i < 251; $i++) {
+
+            $tags = [];
+            for ($i = 0; $i < rand(2, 5); $i++) {
+                $tags[] = ['name' => $protoTags[rand(0, 9)], 'value' => 1];
+            }
+
+            $this->mongo_db->insert('dbProject',
+                $data = array(
+                    'userID' => $i,
+                    'createdBy' => $faker->name,
+                    'productName' => $faker->text($maxNbChars = 20),
+                    'description' => $faker->text($maxNbChars = 250),
+                    'startValue' => $faker->numberBetween($min = 100, $max = 150000),
+                    'startDate' => $faker->date($format = 'd-m-Y', $max = 'now'),
+                    'endDate' => '24-06-2016',
+                    'tags' => $tags,
+                    'images' => [
+                        ['id' => 1, 'name' => 'foto1', 'description' => $faker->text($maxNbChars = 150)]
+                    ],
+                    'bids' => [
+                        [
+                            'bidder' => $faker->name,
+                            'bid' => $faker->numberBetween($min = 500, $max = 200000),
+                            'date' => '24-06-2016'
+                        ]
+                    ]
+                ));
         }
     }
-
 }

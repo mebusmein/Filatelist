@@ -33,12 +33,10 @@ class Welcome extends MY_Controller
 
         $products = Product::createFromJsonBatch($productsJson);
 
-
         $this->load->library('ProductRecommender', ['user' => $user, 'objects' => $products]);
         $data['objects'] = $this->productrecommender->getRecommendation();
 
         var_dump($data['objects']);
 
     }
-
 }

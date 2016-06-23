@@ -3,6 +3,8 @@
 get_instance()->load->iface('HasPreferences');
 class Product extends CI_Model implements HasPreferences
 {
+
+    public $name;
     /**
      * @var string Name of the object
      */
@@ -52,16 +54,15 @@ class Product extends CI_Model implements HasPreferences
         $product->images = $string['images'];
         $product->bids = $string['bids'];
         $product->setPreferences();
+        $product->name = $product->productName;
         return $product;
     }
 
     public function save(){
         if($this->id !== NULL){
-            echo "update";
             $this->mongo_db->where(array('_id'=>$this->id))->update('dbProject',array('userID'=>$this->userID,'createdBy'=>$this->createdBy,'productName'=>$this->productName,'description'=>$this->description,'startValue'=>$this->startValue,'startDate'=>$this->startDate,'endDate'=>$this->endDate,'tags'=>$this->tags,'images'=>$this->images,'bids'=>$this->bids));
         }else{
-            echo "insert";
-            $this->mongo_db->insert('dbProject', $data = array('userID'=>$this->userID,'createdBy'=>$this->createdBy,'productName'=>$this->productName,'description'=>$this->description,'startValue'=>$this->startValue,'startDate'=>$this->startDate,'endDate'=>$this->endDate,'tags'=>$this->tags,'images'=>$this->images,'bids'=>$this->bids));
+            $this->id = $this->mongo_db->insert('dbProject', $data = array('userID'=>$this->userID,'createdBy'=>$this->createdBy,'productName'=>$this->productName,'description'=>$this->description,'startValue'=>$this->startValue,'startDate'=>$this->startDate,'endDate'=>$this->endDate,'tags'=>$this->tags,'images'=>$this->images,'bids'=>$this->bids))->__tostring();
         }
     }
 
@@ -74,9 +75,7 @@ class Product extends CI_Model implements HasPreferences
     }
 
     public function setPreferences(){
-        var_dump($this->tags);
         foreach($this->tags as $tag){
-            $
             $this->setPreference($tag['name'],$tag['value']);
         }
     }

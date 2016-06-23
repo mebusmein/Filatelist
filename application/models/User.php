@@ -6,6 +6,8 @@ use \Illuminate\Database\Eloquent\Model as Eloquent;
 
 class User extends Eloquent implements HasPreferences
 {
+    public $name;
+
     protected $table = 'users';
 
     protected $primaryKey = 'user_id';
@@ -45,7 +47,6 @@ class User extends Eloquent implements HasPreferences
     public function setPreferences($tags)
     {
         foreach($tags as $tag){
-            var_dump($tag->pivot->value);
             $this->setPreference($tag->name,$tag->pivot->value,$tag->pivot->count);
         }
     }

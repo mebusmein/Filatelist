@@ -55,4 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route[LOGIN_PAGE] = 'auth';
 
 $route['account/edit']['post'] = 'account/editPost';
-//$route['account/editPost'] = 'account';
+$route['app/product/create']['get'] = 'app/create';
+$route['app/product/create']['post'] = 'app/createPost';
