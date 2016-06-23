@@ -24,9 +24,8 @@ class Welcome extends MY_Controller {
 
     $test = $this->mongo_db->get_where('dbProject',array('userID'=>3));
     $product = Product::createFromJsonBatch($test);
-    
 
-    /*$product = $this->mongo_db->where(array('userID'=>3))->get('dbProject');
+    $product = $this->mongo_db->where(array('userID'=>3))->get('dbProject');
     $product->userID = 3;
     $product->createdBy = "Johannes koenrades klene";
     $product->productName = "Drop";
@@ -37,7 +36,7 @@ class Welcome extends MY_Controller {
     $product->tags = array('name' => 'tag1', 'value' => 1);
     $product->images = array('id' => 1, 'name' => 'foto', 'description'=>'foto van boven');
     $product->bids = array('bidder'=>'Bas','bid'=>115,'date'=>'24-06-2016');
-    $product->save(); */
+    $product->save();
   }
 
 }

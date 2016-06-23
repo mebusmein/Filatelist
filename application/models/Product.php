@@ -7,7 +7,7 @@ class Product extends CI_Model implements HasPreferences
     /**
      * @var string Name of the object
      */
-    protected $id = null;
+    public $id = null;
     public $userID;
     public $createdBy;
     public $productName;
@@ -41,7 +41,7 @@ class Product extends CI_Model implements HasPreferences
 
     public static function createFromJson($string){
         $product = new Product();
-        $product->id = $string['_id'];
+        $product->id = $string['_id']->__toString();
         $product->userID = $string['userID'];
         $product->createdBy = $string['createdBy'];
         $product->productName = $string['productName'];
