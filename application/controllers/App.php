@@ -24,7 +24,7 @@ class App extends MY_Controller {
         $product1->startDate = '1-1-1970';
         $product1->startValue = '50';
         $product1->endDate = '31-1-1970';
-        $product1->tags = 'fiets';
+        $product1->tags = [['tag' => 'fiets'],['tag' => 'zadel'],['tag' => 'racefiets']];
         $product1->images = '';
         $product1->bids = [['bid' => 10],['bid' => 20,'bidder' => 'null']];
         

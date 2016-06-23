@@ -22,20 +22,27 @@
 	</div>
 	<div class="row">
 		<?php
-		foreach ( $products as $product ):?>
+		foreach ( $products as $product ) :
+			?>
 			
-			<div class="pull-left" style="width:192px;height:256px">
-					<h4><?= $product->productName?></h4>
-					<a href="<?= site_url('app/product/'.$product->id)?>"><img src="<?= base_url('assets/img/stamp1.png')?>" alt="Image" width="50%" height="50%" class="img-responsive"></a>
-				
-				<small>&euro; <?= $product->getHighestBid()['bid']?>,-</small>
-				<br>
-				<div class="btn-group btn-group-xs" role="group" aria-label="...">
-				  <button type="button" class="btn btn-default">Like</button>
-				  <button type="button" class="btn btn-warning">Dislike</button>
-				</div>
-				
+			<div class="pull-left" style="width: 292px; height: 300px">
+			<h4><?= $product->productName?></h4>
+			<a href="<?= site_url('app/product/'.$product->id)?>"><img
+				src="<?= base_url('assets/img/stamp1.png')?>" alt="Image"
+				width="50%" height="50%" class="img-responsive"></a> <small>&euro; <?= $product->getHighestBid()['bid']?>,-</small>
+			<br>
+			<div class="btn-group btn-group-xs" role="group" aria-label="...">
+				<button type="button" class="btn btn-success">Like</button>
+				<button type="button" class="btn btn-danger">Dislike</button>
 			</div>
+			<div class="clearfix"></div>
+			<div class="btn-group btn-group-xs" role="group" aria-label="...">
+				<?php foreach($product->tags as $tag):?>
+					<button type="button" class="btn btn-default"><?= $tag['tag'] ?></button>
+				<?php endforeach;?>
+				</div>
+
+		</div>
 		<?php endforeach; ?>
 	</div>
 </div>
