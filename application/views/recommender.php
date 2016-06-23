@@ -52,7 +52,7 @@
 <!--</div>-->
 <div class="container">
     <!-- Example row of columns -->
-    <div class="row">
+    <div class="row" style="padding-top: 30px">
         <div class="col-md-6">
             <form method="post" class="form-horizontal">
                 <?php foreach ($tags as $item=>$key):?>

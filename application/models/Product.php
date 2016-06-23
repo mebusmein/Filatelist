@@ -51,6 +51,7 @@ class Product extends CI_Model implements HasPreferences
         $product->tags = $string['tags'];
         $product->images = $string['images'];
         $product->bids = $string['bids'];
+        $product->setPreferences();
         return $product;
     }
 
@@ -73,7 +74,9 @@ class Product extends CI_Model implements HasPreferences
     }
 
     public function setPreferences(){
+        var_dump($this->tags);
         foreach($this->tags as $tag){
+            $
             $this->setPreference($tag['name'],$tag['value']);
         }
     }
