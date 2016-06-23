@@ -72,7 +72,7 @@ if( ! isset( $on_hold_message ) )
 		<?php
 			}
 		?>
-
+		submit
 		<p>
 			<?php
 				$link_protocol = USE_SSL ? 'https' : NULL;
@@ -83,7 +83,7 @@ if( ! isset( $on_hold_message ) )
 		</p>
 
 
-		<input type="submit" name="submit" value="Login" id="submit_button"  />
+		<input type="submit" name="" value="Login" id="submit_button"  />
 
 	</div>
 </form>

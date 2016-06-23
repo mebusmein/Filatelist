@@ -13,6 +13,8 @@ class User extends Eloquent implements HasPreferences
 
     protected $preferences = [];
 
+    public $timestamps = false;
+
     /**
      * Product constructor.
      * @param $name
