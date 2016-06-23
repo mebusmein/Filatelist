@@ -19,6 +19,13 @@
                     <div class="list-group-item text-center"><b>Eind datum:</b></div>
                         <div class="list-group-item"><?= $product->endDate; ?></div >
                 </div>
+                <div class="list-group">
+                    <form action="bid" method="post">
+                    <div class="list-group-item text-center"><b>Plaats bod:</b></div>
+                    <div class="list-group-item"><input style="width: 100%" type="number" name="bid" min="<?=$product->getHighestBid()['bid']+5?>" value="<?=$product->getHighestBid()['bid']+5?>"></div >
+                    <div class="list-group-item text-center"><input type="submit" class="btn btn-info btn-sm"></div>
+                    </form>
+                </div>
             </div>
 
             <div class="col-md-9">
@@ -56,9 +63,7 @@
                             <p>This product was great in terms of quality. I would definitely buy another!</p>
                         </div>
                     </div>
-
                     <hr>
-
                 </div>
 
             </div>

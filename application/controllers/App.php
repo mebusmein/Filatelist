@@ -41,6 +41,18 @@ class App extends MY_Controller {
         $this->load->view('footer');
     }
 
+    public function bid(){
+        $this->load->model('user');
+        $this->require_min_level(1);
+        $user = User::find($this->auth_user_id);
+
+        $bid = $this->input->post('bid');
+
+        // mongo db query
+
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+
     public function create(){
         $this->load->model('user');
         $this->require_min_level(1);
