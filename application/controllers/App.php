@@ -78,8 +78,8 @@ class App extends MY_Controller {
             $bid = $this->input->post('bid');
             $date = date("L m Y");
 
-            $this->mongo_db->where(array('_id' => $_POST['id']))->addtoset('bids',
-                ([$user, $bid, $date]))->update('dbProject');
+            $this->mongo_db->where(array('_id' => $_POST['id']))->push('bids',
+                array('bidder' => $user, 'bid' => $bid, 'date' =>$date))->update('dbProject');
 
             //header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
