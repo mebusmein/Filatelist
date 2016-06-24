@@ -59,15 +59,15 @@ class Db extends MY_Controller
         ];
 
         $faker = Faker\Factory::create('nl_NL');
-        for ($i = 1; $i < 251; $i++){
+        $data = [];
+        for ($i = 0; $i < 1000; $i++){
             $tagsSelection = array_rand($protoTags,rand(2,5));
             $tags = [];
             foreach($tagsSelection as $tag) {
                 $tags[] = ['name' => $protoTags[$tag], 'value' => 1];
             }
 
-            $this->mongo_db->insert('dbProject',
-                $data = array(
+                $data[] = array(
                     'userID' => $i,
                     'productName' => $faker->text($maxNbChars = 20),
                     'description' => $faker->text($maxNbChars = 250),
@@ -85,8 +85,10 @@ class Db extends MY_Controller
                             'date' => '24-06-2016'
                         ]
                     ]
-                ));
+                );
         }
+
+        $this->mongo_db->batch_insert('dbProject', $data);
     }
 
     public function sql(){
@@ -95,7 +97,7 @@ class Db extends MY_Controller
 
         $tags = Tag::all();
 
-        for ($i = 0; $i < 250; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $sync = [];
             $newTags = $tags->random(rand(2,5));
             foreach($newTags as $tag){
