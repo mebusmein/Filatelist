@@ -36,7 +36,7 @@ class Auth extends MY_Controller {
     {
         // Customize this array for your user
         $user_data = [
-            'username'   => $this->input->post('username'),
+            'username'   => $this->input->post('register-username'),
             'passwd'     => $this->input->post('register-password'),
             'email'      => $this->input->post('register-email'),
             'auth_level' => '1', // 9 if you want to login @ examples/index.
@@ -44,13 +44,13 @@ class Auth extends MY_Controller {
 
         $this->is_logged_in();
 
-        echo $this->load->view('examples/page_header', '', TRUE);
-
-        // Load resources
+        echo $this->load->view('header', '', TRUE);
+//
+//        // Load resources
         $this->load->model('examples_model');
         $this->load->model('validation_callables');
         $this->load->library('form_validation');
-
+//
         $this->form_validation->set_data( $user_data );
 
         $validation_rules = [
@@ -105,7 +105,6 @@ class Auth extends MY_Controller {
             {
                 $user_data['username'] = NULL;
             }
-
             $this->db->set($user_data)
                 ->insert(config_item('user_table'));
 
@@ -117,7 +116,7 @@ class Auth extends MY_Controller {
                 echo '<h1>User Creation Error(s)</h1>' . validation_errors();
             }
 
-        echo $this->load->view('examples/page_footer', '', TRUE);
+        echo $this->load->view('footer', '', TRUE);
     }
 
 }
