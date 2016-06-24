@@ -26,7 +26,6 @@ class ProductRecommender extends Recommender
             }
         }
 
-
         usort($this->objects, function ($a, $b) {
             if ($a->score == $b->score) {
                 return 0;

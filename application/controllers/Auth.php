@@ -5,6 +5,11 @@ class Auth extends MY_Controller {
 
     public function index()
     {
+        if( $this->verify_min_level(1) )
+        {
+            redirect('app');
+        }
+
         if( strtolower( $_SERVER['REQUEST_METHOD'] ) == 'post' )
         {
             $this->require_min_level(1);
@@ -15,6 +20,16 @@ class Auth extends MY_Controller {
         $this->load->view('header');
         $this->load->view('pages/login');
         $this->load->view('footer');
+    }
+
+    public function logout()
+    {
+        $this->authentication->logout();
+
+        // Set redirect protocol
+        $redirect_protocol = USE_SSL ? 'https' : NULL;
+
+        redirect( site_url( LOGIN_PAGE . '?logout=1', $redirect_protocol ) );
     }
 
     public function registerPost()

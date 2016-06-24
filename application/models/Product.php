@@ -44,7 +44,6 @@ class Product extends CI_Model implements HasPreferences
         $product = new Product();
         $product->id = $string['_id']->__toString();
         $product->userID = $string['userID'];
-        $product->createdBy = $string['createdBy'];
         $product->productName = $string['productName'];
         $product->description = $string['description'];
         $product->startValue = $string['startValue'];
