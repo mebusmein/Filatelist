@@ -54,29 +54,35 @@ class App extends MY_Controller {
     
     public function product(){
         $this->load->model('user');
-        $this->require_min_level(1);
-        $productJson = $this->mongo_db->get_where('dbProject', array('userID'=>2));
-        $product = Product::createFromJson($productJson[0]);
-        $data = [
-            "product" => $product
-        ];
-        $user = User::find($this->auth_user_id);
+        if($this->require_min_level(1)){
+            $user = User::find($this->auth_user_id);
+            $productJson = $this->mongo_db->get_where('dbProject', array('userID' => 2));
+            $product = Product::createFromJson($productJson[0]);
+            $data = [
+                "product" => $product,
+                "user"  => $user
+            ];
 
-        $this->load->view('header');
-        $this->load->view('pages/product', $data);
-        $this->load->view('footer');
+            var_dump($product);
+
+            $this->load->view('header');
+            $this->load->view('pages/product', $data);
+            $this->load->view('footer');
+        }
     }
 
     public function bid(){
         $this->load->model('user');
-        $this->require_min_level(1);
-        $user = User::find($this->auth_user_id);
-        $bid = $this->input->post('bid');
-        $date = date("L m Y");
+        if($this->require_min_level(1)) {
+            $user = User::find($this->auth_user_id);
+            $bid = $this->input->post('bid');
+            $date = date("L m Y");
 
-        $this->mongo_db->where(array('_id'=>$_POST['id']))->addtoset('bids',(array($user,$bid,$date)))->update('dbProject');
+            $this->mongo_db->where(array('_id' => $_POST['id']))->addtoset('bids',
+                ([$user, $bid, $date]))->update('dbProject');
 
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+            //header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
     }
 
     public function create(){
