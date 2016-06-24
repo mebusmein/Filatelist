@@ -27,6 +27,7 @@ class Welcome extends MY_Controller
         $this->load->model('Product');
         $this->require_min_level(1);
         $user = User::find($this->auth_user_id);
+        echo $user;
         $user->setPreferences($user->tags);
 
         $productsJson = $this->mongo_db->select()->limit($x = 200)->get('dbProject');

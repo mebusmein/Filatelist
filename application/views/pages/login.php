@@ -55,6 +55,7 @@
                                     <input type="checkbox" tabindex="3" class="" name="remember_me" id="remember">
                                     <label for="remember" style="color: #315AB6;"> Onthouden </label>
                                 </div>
+                                <?php $user = User::find($this->auth_user_id); echo $user ?>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">

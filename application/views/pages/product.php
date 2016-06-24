@@ -22,7 +22,10 @@
                 <div class="list-group">
                     <form action="bid" method="post">
                     <div class="list-group-item text-center"><b>Plaats bod:</b></div>
-                    <div class="list-group-item"><input style="width: 100%" type="number" name="bid" min="<?=$product->getHighestBid()['bid']+5?>" value="<?=$product->getHighestBid()['bid']+5?>"></div >
+                    <div class="list-group-item">
+                        <input style="width: 100%" type="number" name="bid" min="<?=$product->getHighestBid()['bid']+5?>" value="<?=$product->getHighestBid()['bid']+5?>"></div >
+                        <input type="hidden" name="id" value="<?=$product->id?>">
+                        <?= $user;?>
                     <div class="list-group-item text-center"><input type="submit" class="btn btn-info btn-sm"></div>
                     </form>
                 </div>
