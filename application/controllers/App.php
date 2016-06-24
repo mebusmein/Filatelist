@@ -13,7 +13,7 @@ class App extends MY_Controller {
             $user = User::find($this->auth_user_id);
             $user->setPreferences($user->tags);
 
-            $productsJson = $this->mongo_db->select()->limit($x = 200)->get('dbProject');
+            $productsJson = $this->mongo_db->select()->limit($x = 500)->get('dbProject');
 
             $products = Product::createFromJsonBatch($productsJson);
 
@@ -28,6 +28,28 @@ class App extends MY_Controller {
             $this->load->view('pages/feed', $data);
             $this->load->view('footer');
         }
+    }
+
+    public function test(){
+        $this->load->model('user');
+        $this->load->model('Product');
+        $user = User::find(506508006);
+        $user->setPreferences($user->tags);
+
+        $productsJson = $this->mongo_db->select()->limit($x = 500)->get('dbProject');
+
+        $products = Product::createFromJsonBatch($productsJson);
+
+        $this->load->library('ProductRecommender', ['user' => $user, 'objects' => $products]);
+        $objects = $this->productrecommender->getRecommendation();
+
+        $parts = array_chunk($objects, 50);
+
+        $data['products'] = $parts[0];
+
+        $this->load->view('header');
+        $this->load->view('pages/feed', $data);
+        $this->load->view('footer');
     }
     
     public function product(){
