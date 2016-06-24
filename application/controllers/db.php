@@ -54,16 +54,16 @@ class Db extends MY_Controller
             'Groot',
             'Normaal',
             'Automobiel',
-            '70\'s',
-            '90\'s'
+            '70s',
+            '90s'
         ];
 
         $faker = Faker\Factory::create('nl_NL');
-        for ($i = 1; $i < 251; $i++) {
-
+        for ($i = 1; $i < 251; $i++){
+            $tagsSelection = array_rand($protoTags,rand(2,5));
             $tags = [];
-            for ($i = 0; $i < rand(2, 5); $i++) {
-                $tags[] = ['name' => $protoTags[rand(0, 9)], 'value' => 1];
+            foreach($tagsSelection as $tag) {
+                $tags[] = ['name' => $protoTags[$tag], 'value' => 1];
             }
 
             $this->mongo_db->insert('dbProject',

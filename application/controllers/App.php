@@ -8,24 +8,26 @@ class App extends MY_Controller {
     {
         $this->load->model('user');
         $this->load->model('Product');
-        $this->require_min_level(1);
-        $user = User::find($this->auth_user_id);
-        $user->setPreferences($user->tags);
+        if($this->require_min_level(1)) {
 
-        $productsJson = $this->mongo_db->select()->limit($x = 200)->get('dbProject');
+            $user = User::find($this->auth_user_id);
+            $user->setPreferences($user->tags);
 
-        $products = Product::createFromJsonBatch($productsJson);
+            $productsJson = $this->mongo_db->select()->limit($x = 200)->get('dbProject');
 
-        $this->load->library('ProductRecommender', ['user' => $user, 'objects' => $products]);
-        $objects = $this->productrecommender->getRecommendation();
+            $products = Product::createFromJsonBatch($productsJson);
 
-        $parts = array_chunk ($objects, 50);
+            $this->load->library('ProductRecommender', ['user' => $user, 'objects' => $products]);
+            $objects = $this->productrecommender->getRecommendation();
 
-        $data['products'] = $parts[0];
+            $parts = array_chunk($objects, 50);
 
-        $this->load->view('header');
-        $this->load->view('pages/feed',$data);
-        $this->load->view('footer');
+            $data['products'] = $parts[0];
+
+            $this->load->view('header');
+            $this->load->view('pages/feed', $data);
+            $this->load->view('footer');
+        }
     }
     
     public function product(){
